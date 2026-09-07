@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WorkspaceHub | Flexible Workspace Booking</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<div id="toast" class="toast"></div>
+<header><a class="brand" href="#" onclick="show('home')">WorkspaceHub</a><nav><button onclick="show('spaces')">Spaces</button><button onclick="show('dashboard')">Dashboard</button><button id="loginBtn" onclick="openAuth()">Login</button><button id="logoutBtn" class="hidden">Logout</button></nav></header>
+<main>
+<section id="home" class="hero"><div><span class="eyebrow">Workspace booking SaaS</span><h1>Book a better place to work.</h1><p>Discover desks, meeting rooms and private spaces. Check availability and manage bookings from one workspace.</p><div class="actions"><button class="primary" onclick="show('spaces')">Explore spaces</button><button class="secondary" onclick="openAuth('register')">Create account</button></div></div><div class="hero-panel"><div><b>42</b><span>Available spaces</span></div><div><b>18</b><span>Meeting rooms</span></div><div><b>96%</b><span>Occupancy satisfaction</span></div></div></section>
+<section id="spaces" class="view hidden"><div class="head"><div><span class="eyebrow">Locations</span><h2>Find your workspace</h2></div></div>
+<div class="filters"><input id="search" placeholder="Search space, location or feature"><select id="kind"><option value="">All types</option><option>Desk</option><option>Meeting Room</option><option>Private Office</option></select><select id="capacity"><option value="">Any capacity</option><option value="2">2+</option><option value="4">4+</option><option value="8">8+</option></select></div><div id="spaceGrid" class="grid"></div></section>
+<section id="dashboard" class="view hidden"><div class="head"><div><span class="eyebrow">Workspace</span><h2>My dashboard</h2></div></div><div id="dash"></div></section>
+</main>
+<div id="authModal" class="modal hidden"><div class="box"><button class="close" onclick="closeM('authModal')">×</button><h2 id="authTitle">Sign in</h2><p>Manage your workspace bookings.</p><div class="tabs"><button id="ltab" class="active" onclick="authMode='login';setAuth()">Login</button><button id="rtab" onclick="authMode='register';setAuth()">Register</button></div><form id="authForm"><input id="name" class="reg hidden" placeholder="Full name"><input id="email" type="email" required placeholder="Email"><input id="password" type="password" required placeholder="Password"><button class="primary full">Continue</button></form></div></div>
+<div id="bookModal" class="modal hidden"><div class="box"><button class="close" onclick="closeM('bookModal')">×</button><h2>Book space</h2><p id="spaceName"></p><form id="bookForm"><label>Date<input id="date" type="date" required></label><div class="two"><label>Start<input id="start" type="time" required value="09:00"></label><label>End<input id="end" type="time" required value="17:00"></label></div><button class="primary full">Confirm booking</button></form></div></div>
+<script src="script.js"></script></body></html>
