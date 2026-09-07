@@ -1,4 +1,4 @@
-const API="http://localhost:5000/api";let spaces=[],user=JSON.parse(localStorage.getItem("workspaceHubUser")||"null"),selected=null,authMode="login";
+const API="https://workspacehub-backend-jg13.onrender.com/api";let spaces=[],user=JSON.parse(localStorage.getItem("workspaceHubUser")||"null"),selected=null,authMode="login";
 const $=id=>document.getElementById(id);function esc(s=""){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
 function toast(m){$("toast").textContent=m;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2200)}
 async function api(path,opt={}){let headers={"Content-Type":"application/json",...(opt.headers||{})};if(user?.token)headers.Authorization=`Bearer ${user.token}`;let r=await fetch(API+path,{...opt,headers}),d=await r.json().catch(()=>({}));if(!r.ok)throw Error(d.message||"Request failed");return d}
